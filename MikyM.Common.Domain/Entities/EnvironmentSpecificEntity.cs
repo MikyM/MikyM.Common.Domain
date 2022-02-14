@@ -17,6 +17,9 @@
 
 namespace MikyM.Common.Domain.Entities;
 
+/// <summary>
+/// Specific entity that isn't an aggregate root entity based on <see cref="Entity"/> with <see cref="long"/> Id.
+/// </summary>
 public class EnvironmentSpecificEntity : AggregateRootEntity
 {
 }

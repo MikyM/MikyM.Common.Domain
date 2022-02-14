@@ -19,6 +19,9 @@ using System;
 
 namespace MikyM.Common.Domain.Entities;
 
+/// <summary>
+/// Base entity with <see cref="long"/> as Id
+/// </summary>
 public abstract class Entity : Entity<long>
 {
     protected Entity()
@@ -31,6 +34,9 @@ public abstract class Entity : Entity<long>
     }
 }
 
+/// <summary>
+/// Base entity.
+/// </summary>
 public abstract class Entity<TId>
 {
     protected Entity()

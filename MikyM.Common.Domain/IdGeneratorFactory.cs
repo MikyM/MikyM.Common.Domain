@@ -20,6 +20,9 @@ using IdGen;
 
 namespace MikyM.Common.Domain;
 
+/// <summary>
+/// Factory used to generate snowflake Ids using <see cref="IdGenerator"/>
+/// </summary>
 public static class IdGeneratorFactory
 {
     /// <summary>

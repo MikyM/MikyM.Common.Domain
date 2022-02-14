@@ -17,6 +17,9 @@
 
 namespace MikyM.Common.Domain.Entities;
 
+/// <summary>
+/// Audit log entity
+/// </summary>
 public class AuditLog : EnvironmentSpecificEntity
 {
     public string UserId { get; set; }
