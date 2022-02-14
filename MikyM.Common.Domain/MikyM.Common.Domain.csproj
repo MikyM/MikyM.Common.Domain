@@ -3,11 +3,12 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<PackageId>MikyM.Common.Domain</PackageId>
-		<Version>1.0.2</Version>
+		<Version>1.0.3</Version>
 		<Authors>Krzysztof Kupisz</Authors>
 		<PackageDescription>Base domain for DDD architecture.</PackageDescription>
 		<RepositoryUrl>https://github.com/MikyM/MikyM.Common.Domain</RepositoryUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>
