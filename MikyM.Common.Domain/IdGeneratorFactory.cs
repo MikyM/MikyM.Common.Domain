@@ -16,6 +16,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 using System;
+using System.Collections.Generic;
 using IdGen;
 
 namespace MikyM.Common.Domain;
@@ -28,14 +29,19 @@ public static class IdGeneratorFactory
     /// <summary>
     /// The factory used to create an instance of a <see cref="IdGenerator"/>.
     /// </summary>
-    private static Func<IdGenerator> _factory;
+    private static Dictionary<string, Func<IdGenerator>> _factories = new();
+    /// <summary>
+    /// Default generator name
+    /// </summary>
+    public const string DefaultGeneratorName = "__Snowflake_Id_Generator";
 
     /// <summary>
     /// Initializes the specified creation factory.
     /// </summary>
     /// <param name="creationFactory">The creation factory.</param>
-    public static void SetFactory(Func<IdGenerator> creationFactory)
-        => _factory = creationFactory;
+    /// <param name="generatorName">Name for the generator factory</param>
+    public static void AddFactoryMethod(Func<IdGenerator> creationFactory, string generatorName = DefaultGeneratorName)
+        => _factories.Add(generatorName, creationFactory);
 
     /// <summary>
     /// Creates a <see cref="IdGenerator"/> instance.
@@ -43,8 +49,21 @@ public static class IdGeneratorFactory
     /// <returns>Returns an instance of an <see cref="IdGenerator"/> </returns>
     public static IdGenerator Build()
     {
-        if (_factory == null) throw new InvalidOperationException("You can not create an instance without first building the factory.");
-
-        return _factory();
+        if (_factories.Count == 0) throw new InvalidOperationException("You can not create an instance without first adding a factory.");
+        if (!_factories.TryGetValue(DefaultGeneratorName, out var df))
+            throw new InvalidOperationException("Couldn't find generator factory registered for default generator name.");
+        return df();
+    }
+    
+    /// <summary>
+    /// Creates a <see cref="IdGenerator"/> instance.
+    /// </summary>
+    /// <param name="generatorName">Name of the generator</param>
+    /// <returns>Returns an instance of an <see cref="IdGenerator"/> </returns>
+    public static IdGenerator Build(string generatorName)
+    {
+        if (!_factories.TryGetValue(generatorName, out var df))
+            throw new InvalidOperationException("Couldn't find generator factory registered for default generator name.");
+        return df();
     }
 }
