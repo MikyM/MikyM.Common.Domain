@@ -16,13 +16,14 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 using System;
+using MikyM.Common.Domain.Entities.Base;
 
 namespace MikyM.Common.Domain.Entities;
 
 /// <summary>
 /// Base entity with <see cref="long"/> as Id
 /// </summary>
-public abstract class Entity : Entity<long>
+public abstract class Entity : Entity<long>, IEntity
 {
     protected Entity()
     {
@@ -37,7 +38,7 @@ public abstract class Entity : Entity<long>
 /// <summary>
 /// Base entity.
 /// </summary>
-public abstract class Entity<TId>
+public abstract class Entity<TId> : IEntity<TId>
 {
     protected Entity()
     {

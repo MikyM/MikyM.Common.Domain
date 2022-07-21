@@ -15,11 +15,13 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+using MikyM.Common.Domain.Entities.Base;
+
 namespace MikyM.Common.Domain.Entities;
 
 /// <summary>
 /// Aggregate root entity for Domain Driven Design based on <see cref="Entity"/> with <see cref="long"/> Id.
 /// </summary>
-public class AggregateRootEntity : Entity
+public class AggregateRootEntity : Entity, IAggregateRootEntity
 {
 }

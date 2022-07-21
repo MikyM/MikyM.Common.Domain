@@ -15,11 +15,13 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+using MikyM.Common.Domain.Entities.Base;
+
 namespace MikyM.Common.Domain.Entities;
 
 /// <summary>
 /// Specific entity that isn't an aggregate root entity based on <see cref="Entity"/> with <see cref="long"/> Id.
 /// </summary>
-public class EnvironmentSpecificEntity : AggregateRootEntity
+public class EnvironmentSpecificEntity : AggregateRootEntity, IEnvironmentSpecificEntity
 {
 }
