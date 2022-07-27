@@ -1,8 +1,9 @@
 ﻿namespace MikyM.Common.Domain.Entities;
 
 /// <summary>
-/// Audit log action type
+/// Audit log action type.
 /// </summary>
+[PublicAPI]
 public enum AuditType
 {
     None = 0,

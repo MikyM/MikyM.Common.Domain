@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<PackageId>MikyM.Common.Domain</PackageId>
-		<Version>1.0.7</Version>
+		<Version>1.0.8</Version>
 		<Authors>Krzysztof Kupisz</Authors>
 		<PackageDescription>Base domain for DDD architecture.</PackageDescription>
 		<RepositoryUrl>https://github.com/MikyM/MikyM.Common.Domain</RepositoryUrl>
@@ -13,6 +13,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="IdGen" Version="3.0.1" />
+		<PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
 	</ItemGroup>
 
 </Project>

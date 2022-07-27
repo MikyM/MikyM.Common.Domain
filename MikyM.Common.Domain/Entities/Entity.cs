@@ -21,8 +21,9 @@ using MikyM.Common.Domain.Entities.Base;
 namespace MikyM.Common.Domain.Entities;
 
 /// <summary>
-/// Base entity with <see cref="long"/> as Id
+/// Base entity with <see cref="long"/> as Id.
 /// </summary>
+[PublicAPI]
 public abstract class Entity : Entity<long>, IEntity
 {
     protected Entity()
@@ -40,12 +41,18 @@ public abstract class Entity : Entity<long>, IEntity
 /// </summary>
 public abstract class Entity<TId> : IEntity<TId>
 {
+    /// <summary>
+    /// Base entity constructor.
+    /// </summary>
     protected Entity()
     {
         CreatedAt ??= DateTime.UtcNow;
         UpdatedAt ??= CreatedAt;
     }
 
+    /// <summary>
+    /// Base entity constructor.
+    /// </summary>
     protected Entity(TId id)
     {
         CreatedAt ??= DateTime.UtcNow;
@@ -58,11 +65,14 @@ public abstract class Entity<TId> : IEntity<TId>
     public virtual DateTime? UpdatedAt { get; set; }
     public virtual bool IsDisabled { get; set; }
 
+    /// <summary>
+    /// Returns the string representation of the Id of this entity.
+    /// </summary>
+    /// <returns>The string representation of the Id of this entity.</returns>
     public override string ToString()
-    {
-        return Id.ToString();
-    }
+        => Id.ToString();
 
+    /// <inheritdoc />
     public override bool Equals(object obj)
     {
         if (obj is not Entity<TId> other)
@@ -80,6 +90,12 @@ public abstract class Entity<TId> : IEntity<TId>
         return Id.Equals(other.Id);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="a"></param>
+    /// <param name="b"></param>
+    /// <returns></returns>
     public static bool operator ==(Entity<TId> a, Entity<TId> b)
     {
         if (a  is null && b  is null)
@@ -91,25 +107,32 @@ public abstract class Entity<TId> : IEntity<TId>
         return a.Equals(b);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="a"></param>
+    /// <param name="b"></param>
+    /// <returns></returns>
     public static bool operator !=(Entity<TId> a, Entity<TId> b)
     {
         return !(a == b);
     }
 
+    /// <inheritdoc />
     public override int GetHashCode()
-    {
-        return (GetUnproxiedType(this).ToString() + Id).GetHashCode();
-    }
+        // ReSharper disable once NonReadonlyMemberInGetHashCode
+        => (GetUnproxiedType(this).ToString() + Id).GetHashCode();
 
+    
     internal static Type GetUnproxiedType(object obj)
     {
-        const string EFCoreProxyPrefix = "Castle.Proxies.";
-        const string NHibernateProxyPostfix = "Proxy";
+        const string efCoreProxyPrefix = "Castle.Proxies.";
+        const string nHibernateProxyPostfix = "Proxy";
 
-        Type type = obj.GetType();
-        string typeString = type.ToString();
+        var type = obj.GetType();
+        var typeString = type.ToString();
 
-        if (typeString.Contains(EFCoreProxyPrefix) || typeString.EndsWith(NHibernateProxyPostfix))
+        if (typeString.Contains(efCoreProxyPrefix) || typeString.EndsWith(nHibernateProxyPostfix))
             return type.BaseType;
 
         return type;

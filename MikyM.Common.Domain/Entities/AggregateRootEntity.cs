@@ -22,6 +22,7 @@ namespace MikyM.Common.Domain.Entities;
 /// <summary>
 /// Aggregate root entity for Domain Driven Design based on <see cref="Entity"/> with <see cref="long"/> Id.
 /// </summary>
+[PublicAPI]
 public class AggregateRootEntity : Entity, IAggregateRootEntity
 {
 }
