@@ -26,10 +26,16 @@ namespace MikyM.Common.Domain.Entities;
 [PublicAPI]
 public abstract class Entity : Entity<long>, IEntity
 {
+    /// <summary>
+    /// Base entity constructor.
+    /// </summary>
     protected Entity()
     {
     }
 
+    /// <summary>
+    /// Base entity constructor.
+    /// </summary>
     protected Entity(long id)
         : base(id)
     {
@@ -60,10 +66,15 @@ public abstract class Entity<TId> : IEntity<TId>
         Id = id;
     }
 
+
+    /// <inheritdoc />
     public virtual TId Id { get; protected set; }
+
+    /// <inheritdoc />
     public virtual DateTime? CreatedAt { get; set; }
+
+    /// <inheritdoc />
     public virtual DateTime? UpdatedAt { get; set; }
-    public virtual bool IsDisabled { get; set; }
 
     /// <summary>
     /// Returns the string representation of the Id of this entity.
