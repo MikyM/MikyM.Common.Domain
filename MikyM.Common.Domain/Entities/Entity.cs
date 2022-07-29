@@ -165,7 +165,4 @@ public abstract class Entity<TId> : IEntity<TId>, IEquatable<Entity<TId>> where 
 
         return type;
     }
-
-    /// <inheritdoc/>
-    object IEntityBase.Id => Id;
 }
