@@ -1,6 +1,6 @@
 using System;
 
-namespace MikyM.Common.Domain.Entities.Base;
+namespace MikyM.Common.Domain.Entities;
 
 /// <summary>
 /// Defines a base entity with <see cref="long"/> Id.
@@ -20,14 +20,6 @@ public interface IEntity<out TId> : IEntityBase where TId : IComparable, IEquata
     /// The Id of the entity.
     /// </summary>
     new TId Id { get; }
-    /// <summary>
-    /// Creation date of the entity.
-    /// </summary>
-    DateTime? CreatedAt { get; set; }
-    /// <summary>
-    /// Last update date of the entity.
-    /// </summary>
-    DateTime? UpdatedAt { get; set; }
 }
 
 /// <summary>
@@ -40,4 +32,12 @@ public interface IEntityBase
     /// The Id of the entity.
     /// </summary>
     object Id { get; }
+    /// <summary>
+    /// Creation date of the entity.
+    /// </summary>
+    DateTime? CreatedAt { get; set; }
+    /// <summary>
+    /// Last update date of the entity.
+    /// </summary>
+    DateTime? UpdatedAt { get; set; }
 }

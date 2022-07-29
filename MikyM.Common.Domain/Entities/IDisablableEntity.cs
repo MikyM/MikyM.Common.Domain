@@ -1,4 +1,4 @@
-namespace MikyM.Common.Domain.Entities.Base;
+namespace MikyM.Common.Domain.Entities;
 
 /// <summary>
 /// Defines an entity that is soft deleted.
