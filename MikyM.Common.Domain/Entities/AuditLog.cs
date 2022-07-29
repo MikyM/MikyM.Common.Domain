@@ -21,7 +21,7 @@ namespace MikyM.Common.Domain.Entities;
 /// Audit log entity.
 /// </summary>
 [PublicAPI]
-public class AuditLog : EnvironmentSpecificEntity
+public class AuditLog : Entity
 {
     /// <summary>
     /// Id of the user responsible for the changes.

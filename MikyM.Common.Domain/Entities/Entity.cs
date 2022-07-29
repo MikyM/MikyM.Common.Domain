@@ -21,7 +21,7 @@ using MikyM.Common.Domain.Entities.Base;
 namespace MikyM.Common.Domain.Entities;
 
 /// <summary>
-/// Base entity with <see cref="long"/> as Id.
+/// Defines a base entity with <see cref="long"/> as Id.
 /// </summary>
 [PublicAPI]
 public abstract class Entity : Entity<long>, IEntity
@@ -43,9 +43,9 @@ public abstract class Entity : Entity<long>, IEntity
 }
 
 /// <summary>
-/// Base entity.
+/// Defines a generic base entity.
 /// </summary>
-public abstract class Entity<TId> : IEntity<TId>
+public abstract class Entity<TId> : IEntity<TId>, IEquatable<Entity<TId>>
 {
     /// <summary>
     /// Base entity constructor.
@@ -82,6 +82,24 @@ public abstract class Entity<TId> : IEntity<TId>
     /// <returns>The string representation of the Id of this entity.</returns>
     public override string ToString()
         => Id.ToString();
+
+    /// <inheritdoc />
+    public bool Equals(Entity<TId> other)
+    {
+        if (other is null)
+            return false;
+        
+        if (ReferenceEquals(this, other))
+            return true;
+
+        if (GetUnproxiedType(this) != GetUnproxiedType(other))
+            return false;
+
+        if (Id.Equals(default) || other.Id.Equals(default))
+            return false;
+
+        return Id.Equals(other.Id);
+    }
 
     /// <inheritdoc />
     public override bool Equals(object obj)

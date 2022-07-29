@@ -3,8 +3,9 @@ using System;
 namespace MikyM.Common.Domain.Entities.Base;
 
 /// <summary>
-/// Defines an entity.
+/// Defines a base entity with <see cref="long"/> as Id.
 /// </summary>
+[PublicAPI]
 public interface IEntity : IEntity<long>
 {
 }
@@ -12,6 +13,7 @@ public interface IEntity : IEntity<long>
 /// <summary>
 /// Defines a generic base entity.
 /// </summary>
+[PublicAPI]
 public interface IEntity<out TId>
 {
     /// <summary>
