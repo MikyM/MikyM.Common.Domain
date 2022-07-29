@@ -44,7 +44,7 @@ public abstract class Entity : Entity<long>, IEntity
 /// <summary>
 /// Defines a generic base entity.
 /// </summary>
-public abstract class Entity<TId> : IEntity<TId>, IEquatable<Entity<TId>> where TId : IFormattable, IComparable, IComparable<TId>, IEquatable<TId>
+public abstract class Entity<TId> : EntityBase, IEntity<TId>, IEquatable<Entity<TId>> where TId : IFormattable, IComparable, IComparable<TId>, IEquatable<TId>
 {
     /// <summary>
     /// Base entity constructor.
@@ -165,4 +165,10 @@ public abstract class Entity<TId> : IEntity<TId>, IEquatable<Entity<TId>> where 
 
         return type;
     }
+}
+
+/// <inheritdoc />
+[PublicAPI]
+public class EntityBase : IEntityBase
+{
 }

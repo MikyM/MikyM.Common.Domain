@@ -33,7 +33,7 @@ public interface IEntity<out TId> : IEntityBase where TId : IComparable, IEquata
 }
 
 /// <summary>
-/// Defines a base marker interface for entities. <b> Shouldn't be implemented manually.</b>
+/// Defines a base marker for entities. <b> Shouldn't be implemented manually.</b>
 /// </summary>
 [PublicAPI]
 public interface IEntityBase
