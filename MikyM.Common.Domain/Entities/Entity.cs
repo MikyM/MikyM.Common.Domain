@@ -169,6 +169,6 @@ public abstract class Entity<TId> : EntityBase, IEntity<TId>, IEquatable<Entity<
 
 /// <inheritdoc />
 [PublicAPI]
-public class EntityBase : IEntityBase
+public abstract class EntityBase : IEntityBase
 {
 }
