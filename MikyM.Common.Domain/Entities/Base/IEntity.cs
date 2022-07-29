@@ -3,7 +3,7 @@ using System;
 namespace MikyM.Common.Domain.Entities.Base;
 
 /// <summary>
-/// Defines a base entity with <see cref="long"/> as Id.
+/// Defines a base entity with <see cref="long"/> Id.
 /// </summary>
 [PublicAPI]
 public interface IEntity : IEntity<long>
@@ -14,12 +14,12 @@ public interface IEntity : IEntity<long>
 /// Defines a generic base entity.
 /// </summary>
 [PublicAPI]
-public interface IEntity<out TId>
+public interface IEntity<out TId> : IEntityBase where TId : IComparable, IEquatable<TId>, IComparable<TId>
 {
     /// <summary>
-    /// Id of the entity.
+    /// The Id of the entity.
     /// </summary>
-    TId Id { get; }
+    new TId Id { get; }
     /// <summary>
     /// Creation date of the entity.
     /// </summary>
@@ -28,4 +28,16 @@ public interface IEntity<out TId>
     /// Last update date of the entity.
     /// </summary>
     DateTime? UpdatedAt { get; set; }
+}
+
+/// <summary>
+/// Defines a base entity.
+/// </summary>
+[PublicAPI]
+public interface IEntityBase
+{
+    /// <summary>
+    /// The Id of the entity.
+    /// </summary>
+    object Id { get; }
 }
