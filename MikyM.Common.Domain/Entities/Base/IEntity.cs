@@ -31,7 +31,7 @@ public interface IEntity<out TId> : IEntityBase where TId : IComparable, IEquata
 }
 
 /// <summary>
-/// Defines a base entity.
+/// Defines a base entity. <b>Shouldn't be implemented manually, implement <see cref="IEntity"/> or <see cref="IEntity{TId}"/> instead.</b>
 /// </summary>
 [PublicAPI]
 public interface IEntityBase
