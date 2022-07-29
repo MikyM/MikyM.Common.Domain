@@ -19,7 +19,7 @@ public interface IEntity<out TId> : IEntityBase where TId : IComparable, IEquata
     /// <summary>
     /// The Id of the entity.
     /// </summary>
-    new TId Id { get; }
+    TId Id { get; }
 
     /// <summary>
     /// Creation date of the entity.
